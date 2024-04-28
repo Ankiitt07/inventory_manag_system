@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Interface</title> 
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        }
+        body{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4070f4;
+        }
+        .wrapper{
+        position: relative;
+        max-width: 430px;
+        width: 100%;
+        background: #fff;
+        padding: 34px;
+        border-radius: 6px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        .wrapper h1{
+        display: flex;
+        position: relative;
+        font-size: 40px;
+        justify-content: center;
+        font-weight: 600;
+        color: #333;
+        }
+        .wrapper h2{
+        position: relative;
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+        }
+        .wrapper h2::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 28px;
+        border-radius: 12px;
+        background: #4070f4;
+        }        
+        .wrapper h3{
+        color: #333;
+        width: 100%;
+        position: relative;
+        font-size: 18px;
+        font-weight: 600;
+        }
+        .wrapper h3 a{
+        color: #4070f4;
+        text-decoration: none;
+        }
+        .wrapper h3 a:hover{
+        text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>User Interface</h1>
+    <br>
+    <h2></h2>
+    <br><br>
+    <h3>Users List :<a href="{% url 'user_list' %}"> Click Here</a></h3>
+    <h3>Products List :<a href="{% url 'product_list' %}"> Click Here</a></h3>
+    <h3>Repair Products List :<a href="{% url 'repair_product' %}"> Click Here</a></h3>
+    <h3>Rejected Products List :<a href="{% url 'rejected_product' %}"> Click Here</a></h3>
+    <h3>Product Tracking :<a href="{% url 'product_tracking' %}"> Click Here</a></h3>
+    <h3>Analytics Data :<a href="{% url 'analytics_daily_production' %}"> Click Here</a></h3>
+    <h3><a href="{% url 'user_logout' %}" type="button" style="color: red;" >Logout</a></h3>
+  </div>
+</body>
+</html>

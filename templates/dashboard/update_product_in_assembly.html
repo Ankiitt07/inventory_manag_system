@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product Assembly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Update Product Assembly</a>
+          <form class="d-flex" role="search" action="#">
+            <a href="{% url 'dashboard' %}" class="navbar-brand">Home</a>
+            <!-- <a href="{% url 'add_product_in_assembly' %}" class="btn btn-primary" style="margin-right: 10px;">Add Product</a> -->
+            <a href="{% url 'user_logout' %}" class="btn btn-danger" type="button">Logout</a>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main class="container mt-5">
+      {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+      {% endfor %}
+      {% if products_data %}
+      <form action="{% url 'update_product_in_assembly' products_data.pt_id %}" method="post" class="row g-3">
+        {% csrf_token %}
+        <div class="col-md-6">
+          <input type="hidden" value="{{products_data.product_id}}" name="product_id">
+          <input type="hidden" value="{{products_data.quantity}}" name="product_quantity">
+          <label for="inputProduct" class="form-label">Product</label>
+          <select id="inputProduct" class="form-select" name="product" disabled>
+            <option value="{{products_data.product_id}}" selected>{{products_data.product_name}}</option>
+          </select>      
+        </div>
+        <div class="col-md-6">
+          <label for="inputQuantity" class="form-label">Quantity</label>
+          <input type="number" class="form-control" name="quantity" value="{{products_data.quantity}}" id="inputQuantity" disabled>
+        </div>
+        <div class="col-md-2">
+          <label for="inputStatus" class="form-label">Status</label>
+          <select id="inputStatus" class="form-select" name="status">
+            <!-- <option value="1" selected>Packed</option> -->
+            <option value="2" >Dispatched</option>
+            <option value="3" >Repair</option>
+            <option value="4" >Returned</option>
+          </select>     
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Add</button>
+          <a href="{% url 'product_tracking' %}" type="submit" class="btn btn-danger">Cancel</a>
+        </div>
+      </form>
+      {% endif %}
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
